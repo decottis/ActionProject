@@ -20,6 +20,6 @@ public abstract class ActionTest {
 		}
 		
 		assertTrue(action.isFinished());
-		action.doStep(); //this should throw the ActionFinishedException
+		action.doStep(); // this should throw the ActionFinishedException
 	}
 }

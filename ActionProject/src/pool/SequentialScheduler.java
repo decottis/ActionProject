@@ -19,8 +19,9 @@ public class SequentialScheduler extends Scheduler {
 	}
 	
 	public Action getFirstActionNotFinished(){
+		Action tmp;
 		for(int i = 0; i < this.actions.size(); i++){
-			Action tmp = this.actions.get(i);
+			tmp = this.actions.get(i);
 			if(!tmp.isFinished()) return tmp;
 		}
 		return null;
