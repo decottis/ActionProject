@@ -10,11 +10,6 @@ public abstract class Scheduler extends Action {
 		
 	}
 	
-	@Override
-	public void reallyDotStep() {
-		
-	}
-	
 	public boolean isFinished(){
 		for(Action e : actions){
 			if(!e.isFinished()) return false;
