@@ -26,24 +26,19 @@ public abstract class Action {
 	}
 	/**
 	 * Make one step of this action.
-	 * @throws ActionFinishedExeption
+	 * @throws ActionFinishedException
 	 */
-	public void doStep() throws ActionFinishedExeption{
+	public void doStep() throws ActionFinishedException{
 		if(this.state == State.FINISHED) {
-			throw new ActionFinishedExeption();
-		} else if(++this.stepCounter == this.nbSteps){
+			throw new ActionFinishedException();
+		} /*else if(++this.stepCounter == this.nbSteps){
 			this.state = State.FINISHED;
 		} else {
 			this.state = State.INPROGRESS;
-		}
+		}*/
 	}
 	/**
 	 * 
-	 */
-	public abstract void reallyDotStep();
-	/**
-	 * 
-	 * @return true if state is finished, false else.
 	 */
 	public boolean isFinished(){
 		return this.state == State.FINISHED;

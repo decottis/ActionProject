@@ -9,9 +9,9 @@ public class FairScheduler extends Scheduler {
 		index = 0;
 	}
 	
-	public void doStep() throws ActionFinishedExeption{
+	public void doStep() throws ActionFinishedException{
 		if(this.state == State.FINISHED) {
-			throw new ActionFinishedExeption();
+			throw new ActionFinishedException();
 		}
 		getAfterActionNotFinished().doStep();
 		this.stepCounter++;

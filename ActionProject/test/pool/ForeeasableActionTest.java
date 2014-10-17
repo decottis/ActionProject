@@ -15,7 +15,7 @@ public class ForeeasableActionTest extends ActionTest{
 	}
 
 	@Test
-	public void isFinishedAfterTenInvocation() throws ActionFinishedExeption{
+	public void isFinishedAfterTenInvocation() throws ActionFinishedException{
 		numberMax = 10;
 		ForeeasableAction foreeasableaction = new ForeeasableAction(numberMax);
 		for(int i = 0; i < numberMax; i++){

@@ -11,13 +11,13 @@ public abstract class SchedulerTest extends ActionTest{
 	
 	public abstract Scheduler createScheduler();
 
-	@Test(expected = ActionFinishedExeption.class)
-	public void doStepWhileFinishedThrowsException() throws ActionFinishedExeption{
+	@Test(expected = ActionFinishedException.class)
+	public void doStepWhileFinishedThrowsException() throws ActionFinishedException{
 		Scheduler scheduler = createScheduler();
 		while(!scheduler.isFinished()){
 			try{
 				scheduler.doStep();
-			} catch (ActionFinishedExeption e){
+			} catch (ActionFinishedException e){
 				fail("scheduler was no supposed to be finished, we just checked");
 			}
 		}

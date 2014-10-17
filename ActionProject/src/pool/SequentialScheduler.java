@@ -3,9 +3,9 @@ package pool;
 
 public class SequentialScheduler extends Scheduler {
 	
-	public void doStep() throws ActionFinishedExeption{
+	public void doStep() throws ActionFinishedException{
 		if(this.state == State.FINISHED) {
-			throw new ActionFinishedExeption();
+			throw new ActionFinishedException();
 		}
 		getFirstActionNotFinished().doStep();
 		this.stepCounter++;
