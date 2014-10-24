@@ -4,10 +4,10 @@ import java.util.NoSuchElementException;
 
 public class TakeResourceAction<R extends Resource> extends Action {
 
-	protected ResourcePool rp;
-	protected ResourcefulUser<Resource> ru;
+	protected ResourcePool<R> rp;
+	protected ResourcefulUser<R> ru;
 	
-	public TakeResourceAction(ResourcefulUser<Resource> ru, ResourcePool rp) {
+	public TakeResourceAction(ResourcefulUser<R> ru, ResourcePool<R> rp) {
 		this.rp=rp;
 		this.ru = ru;
 		this.state = State.READY;
@@ -15,12 +15,18 @@ public class TakeResourceAction<R extends Resource> extends Action {
 	
 	public void doStep() throws NoSuchElementException, ActionFinishedException{
 			super.doStep();
+			String display = "Trying to take ressource from pool " /*+ ru.getResource().getDescription()*/ + "... ";
 			try{
 				ru.setResource(rp.provideResource());
+				this.state = State.FINISHED;
+				display += " success ";
 			} catch (NoSuchElementException e){
 				this.state = State.INPROGRESS;
+				display += " failed ";
+			} finally {
+				System.out.println(display);
 			}
-			this.state = State.FINISHED;
+			
 			
 	}
 }

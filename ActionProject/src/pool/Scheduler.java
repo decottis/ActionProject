@@ -7,7 +7,7 @@ public abstract class Scheduler extends Action {
 	protected ArrayList<Action> actions;
 	
 	public Scheduler() {
-		
+		this.actions = new ArrayList<Action>();
 	}
 	
 	public boolean isFinished(){

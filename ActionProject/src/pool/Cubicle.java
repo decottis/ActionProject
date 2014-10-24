@@ -1,10 +1,10 @@
 package pool;
 
-public class Basket implements Resource {
+public class Cubicle implements Resource {
 
 	@Override
 	public String getDescription() {
-		return "Basket";
+		return "Cubicle";
 	}
 
 }

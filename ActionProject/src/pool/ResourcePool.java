@@ -3,27 +3,27 @@ package pool;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public abstract class ResourcePool implements Resource{
-	protected ArrayList<Resource> available;
-	protected ArrayList<Resource> unavailable;
+public abstract class ResourcePool<R extends Resource>{
+	protected ArrayList<R> available;
+	protected ArrayList<R> unavailable;
 	
 	public ResourcePool(int size){
-		available = new ArrayList<Resource>(size);
+		available = new ArrayList<R>(size);
 		for(int i = 0; i < size; i ++){
 			available.add(createResource());
 		}
-		unavailable = new ArrayList<Resource>(size);
+		unavailable = new ArrayList<R>(size);
 	}
 	
-	public abstract Resource createResource();
+	public abstract R createResource();
 	
-	public Resource provideResource() throws NoSuchElementException{
+	public R provideResource() throws NoSuchElementException{
 		if(available.isEmpty()) throw new NoSuchElementException();
 		unavailable.add(available.get(0));
 		return available.get(0);
 	}
 	
-	public void freeResource(Resource r) throws IllegalArgumentException{
+	public void freeResource(R r) throws IllegalArgumentException{
 		if(unavailable.contains(r)){
 			unavailable.remove(r);
 			available.add(r);

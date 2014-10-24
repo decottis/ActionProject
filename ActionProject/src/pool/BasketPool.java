@@ -1,13 +1,13 @@
 package pool;
 
-public class BasketPool extends ResourcePool {
+public class BasketPool extends ResourcePool<Basket> {
 
 	public BasketPool(int size) {
 		super(size);
 	}
 
 	@Override
-	public Resource createResource() {
+	public Basket createResource() {
 		return new Basket();
 	}
 

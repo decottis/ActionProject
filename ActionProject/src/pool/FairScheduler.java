@@ -1,7 +1,5 @@
 package pool;
 
-import pool.Action.State;
-
 public class FairScheduler extends Scheduler {
 
 	int index;
