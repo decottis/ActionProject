@@ -2,35 +2,44 @@ package pool;
 
 public class FairScheduler extends Scheduler {
 
-	int index;
+	protected int index;
+	
 	public FairScheduler(){
-		index = 0;
+		this.index = 0;
 	}
 	
 	public void doStep() throws ActionFinishedException{
-		if(this.state == State.FINISHED) {
-			throw new ActionFinishedException();
-		}
-		getAfterActionNotFinished().doStep();
-		this.stepCounter++;
-		if(this.isFinished()){
-			this.state = State.FINISHED;
-		} /*else if(++this.stepCounter == this.nbSteps){
-			this.state = State.FINISHED;
-		} */else {
+		super.doStep();
+		
+		Action tmp = getAfterActionNotFinished();
+		
+		if(tmp != null){
+			tmp.doStep();
 			this.state = State.INPROGRESS;
+		} else {
+			this.state = State.FINISHED;
 		}
+		
+		if(this.allActionsAreFinished()) 
+			this.state = State.FINISHED;
 	}
 	
 	public Action getAfterActionNotFinished(){
-		for(int i = this.index+1; i < this.actions.size(); i++){
-			Action tmp = this.actions.get(i);
-			if(!tmp.isFinished()) {
-				this.index = i;
-				return tmp;
+		if(this.index == this.actions.size()) this.index = 0;
+		/*On regarde après l'index*/
+		for(int i = this.index; i < this.actions.size(); i++){
+			if(!this.actions.get(i).isFinished()){
+				this.index = i+1;
+				return this.actions.get(i);
+			}
+		}
+		/*Si l'on a pas retourné une action, on regarde avant l'index en partant du début de la liste d'actions*/
+		for(int i = 0; i < this.index; i++){
+			if(!this.actions.get(i).isFinished()){
+				this.index = i+1;
+				return this.actions.get(i);
 			}
 		}
 		return null;
-		
 	}
 }

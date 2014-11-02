@@ -15,18 +15,19 @@ public class TakeResourceAction<R extends Resource> extends Action {
 	
 	public void doStep() throws NoSuchElementException, ActionFinishedException{
 			super.doStep();
-			String display = "Trying to take ressource from pool " /*+ ru.getResource().getDescription()*/ + "... ";
+			String display = "\tTrying to take ressource from pool " /*+ ru.getResource().getDescription()*/ + "... ";
 			try{
-				ru.setResource(rp.provideResource());
-				this.state = State.FINISHED;
+				this.ru.setResource(this.rp.provideResource());
+				
+				display += this.ru.getResource().getDescription();
 				display += " success ";
+				display += "elements restant : " + this.rp.available.size();
+				this.state = State.FINISHED;
 			} catch (NoSuchElementException e){
 				this.state = State.INPROGRESS;
 				display += " failed ";
 			} finally {
 				System.out.println(display);
 			}
-			
-			
 	}
 }

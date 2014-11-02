@@ -12,10 +12,17 @@ public class FreeResourceAction<R extends Resource> extends Action {
 	
 	public void doStep() throws IllegalArgumentException, ActionFinishedException{
 			super.doStep();
+			
+			String display = "\tTrying to free ressource to pool " + this.ru.getResource().getDescription() + "... ";
 			try{
-				rp.freeResource(ru.getResource());
+				this.rp.freeResource(this.ru.getResource());
+				this.ru.resetResource();
+				display += " success ";
 			} catch (IllegalArgumentException e){
 				this.state = State.INPROGRESS;
+				display += " failed ";
+			} finally {
+				System.out.println(display);
 			}
 			this.state = State.FINISHED;
 			

@@ -1,9 +1,11 @@
 package pool;
 
-public class Swimmer extends FairScheduler{
+public class Swimmer extends SequentialScheduler{
 	protected String name;
 	protected BasketPool bp;
 	protected CubiclePool cp;
+	ResourcefulUser<Basket> basket = new ResourcefulUser<Basket>();
+	ResourcefulUser<Cubicle> cubicle = new ResourcefulUser<Cubicle>();
 	protected int timeUndress, timeSwam, timeToDress;
 	
 	
@@ -15,28 +17,28 @@ public class Swimmer extends FairScheduler{
 		this.timeSwam = timeToSwim;
 		this.timeToDress = timeToDress;
 		
+		this.basket = new ResourcefulUser<Basket>();
+		this.cubicle = new ResourcefulUser<Cubicle>();
+		
 		this.state = State.READY;
 		
-		initActions();
+		this.initActions();
 	}
 	
 	private void initActions(){
-		ResourcefulUser<Basket> basket = new ResourcefulUser<Basket>();
-		ResourcefulUser<Cubicle> cubicle = new ResourcefulUser<Cubicle>();
-		this.addAction(new TakeResourceAction<Basket>(basket, bp));
-		this.addAction(new TakeResourceAction<Cubicle>(cubicle, cp));
-		this.addAction(new ForeeasableAction(timeUndress));
-		this.addAction(new FreeResourceAction<Cubicle>(cubicle, cp));
-		this.addAction(new ForeeasableAction(timeSwam));
-		this.addAction(new TakeResourceAction<Cubicle>(cubicle, cp));
-		this.addAction(new ForeeasableAction(timeToDress));
-		this.addAction(new FreeResourceAction<Cubicle>(cubicle, cp));
-		this.addAction(new FreeResourceAction<Basket>(basket, bp));
+		this.addAction(new TakeResourceAction<Basket>(this.basket, this.bp));
+		this.addAction(new TakeResourceAction<Cubicle>(this.cubicle, this.cp));
+		this.addAction(new ForeeasableAction("undressing", this.timeUndress));
+		this.addAction(new FreeResourceAction<Cubicle>(this.cubicle, this.cp));
+		this.addAction(new ForeeasableAction("swimming", this.timeSwam));
+		this.addAction(new TakeResourceAction<Cubicle>(this.cubicle, this.cp));
+		this.addAction(new ForeeasableAction("dressing", this.timeToDress));
+		this.addAction(new FreeResourceAction<Cubicle>(this.cubicle, this.cp));
+		this.addAction(new FreeResourceAction<Basket>(this.basket, this.bp));
 	}
 	
 	public void doStep(){
 		System.out.println(this.name + " play turn : ");
 		super.doStep();
-		
 	}
 }

@@ -3,7 +3,7 @@ public abstract class Action {
 	/**
 	 * Number of steps for finish this action.
 	 */
-	protected int nbSteps;
+	protected int nbStepsMax;
 	/**
 	 * The current step number.
 	 */
@@ -22,27 +22,20 @@ public abstract class Action {
 	 */
 	public Action(){
 		this.state = State.READY;
-		
 	}
 	/**
 	 * Make one step of this action.
 	 * @throws ActionFinishedException
 	 */
 	public void doStep() throws ActionFinishedException{
-		if(this.state == State.FINISHED) {
+		if(this.state == State.FINISHED) 
 			throw new ActionFinishedException();
-		} /*else if(++this.stepCounter == this.nbSteps){
-			this.state = State.FINISHED;
-		} else {
-			this.state = State.INPROGRESS;
-		}*/
 	}
 	/**
 	 * 
 	 */
 	public boolean isFinished(){
 		return this.state == State.FINISHED;
-		
 	}
 	
 }

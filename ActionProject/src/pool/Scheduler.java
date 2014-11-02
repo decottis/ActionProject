@@ -10,8 +10,8 @@ public abstract class Scheduler extends Action {
 		this.actions = new ArrayList<Action>();
 	}
 	
-	public boolean isFinished(){
-		for(Action e : actions){
+	public boolean allActionsAreFinished(){
+		for(Action e : this.actions){
 			if(!e.isFinished()) return false;
 		}
 		return true;

@@ -8,25 +8,29 @@ public abstract class ResourcePool<R extends Resource>{
 	protected ArrayList<R> unavailable;
 	
 	public ResourcePool(int size){
-		available = new ArrayList<R>(size);
+		this.available = new ArrayList<R>(size);
 		for(int i = 0; i < size; i ++){
-			available.add(createResource());
+			this.available.add(this.createResource());
 		}
-		unavailable = new ArrayList<R>(size);
+		this.unavailable = new ArrayList<R>(size);
 	}
 	
 	public abstract R createResource();
 	
 	public R provideResource() throws NoSuchElementException{
-		if(available.isEmpty()) throw new NoSuchElementException();
-		unavailable.add(available.get(0));
-		return available.get(0);
+		if(this.available.isEmpty()) throw new NoSuchElementException();
+		else {
+			R tmp = this.available.get(0);
+			this.unavailable.add(tmp);
+			this.available.remove(0);
+			return tmp;
+		}
 	}
 	
 	public void freeResource(R r) throws IllegalArgumentException{
-		if(unavailable.contains(r)){
-			unavailable.remove(r);
-			available.add(r);
+		if(this.unavailable.contains(r)){
+			this.unavailable.remove(r);
+			this.available.add(r);
 		} else {
 			throw new IllegalArgumentException();
 		}

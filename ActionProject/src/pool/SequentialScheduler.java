@@ -7,13 +7,11 @@ public class SequentialScheduler extends Scheduler {
 		if(this.state == State.FINISHED) {
 			throw new ActionFinishedException();
 		}
-		getFirstActionNotFinished().doStep();
+		this.getFirstActionNotFinished().doStep();
 		this.stepCounter++;
-		if(this.isFinished()){
+		if(this.allActionsAreFinished()){
 			this.state = State.FINISHED;
-		} /*else if(++this.stepCounter == this.nbSteps){
-			this.state = State.FINISHED;
-		} */else {
+		} else {
 			this.state = State.INPROGRESS;
 		}
 	}
