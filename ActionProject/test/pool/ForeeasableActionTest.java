@@ -20,12 +20,13 @@ public class ForeeasableActionTest extends ActionTest {
 		ForeeasableAction foreeasableaction = new ForeeasableAction(
 				"ForeesableAction", numberMax);
 		for (int i = 0; i < numberMax; i++) {
-			foreeasableaction.doStep();
-			if (i < numberMax)
+			if (i < numberMax) {
+				System.out.println(i);
 				assertFalse(foreeasableaction.isFinished());
-			else
-				assertTrue(foreeasableaction.isFinished());
+				foreeasableaction.doStep();
+			}
 		}
+		assertTrue(foreeasableaction.isFinished());
 	}
 
 	@Override

@@ -32,6 +32,7 @@ public class TakeResourceAction<R extends Resource> extends Action {
 		} catch (NoSuchElementException e) {
 			this.state = State.INPROGRESS;
 			display += " failed ";
+			throw new NoSuchElementException();
 		} finally {
 			System.out.println(display);
 		}

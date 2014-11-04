@@ -23,6 +23,7 @@ public class FreeResourceAction<R extends Resource> extends Action {
 		} catch (IllegalArgumentException e) {
 			this.state = State.INPROGRESS;
 			display += " failed ";
+			throw new IllegalArgumentException();
 		} finally {
 			System.out.println(display);
 		}
