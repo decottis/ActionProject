@@ -1,5 +1,9 @@
 package pool;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ */
 public class Pool {
 	public static void main(String[] args) throws ActionFinishedException {
 		BasketPool baskets = new BasketPool(6);

@@ -1,7 +1,12 @@
 package pool;
 
 import java.util.NoSuchElementException;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ * @param <R>
+ */
 public class TakeResourceAction<R extends Resource> extends Action {
 
 	protected ResourcePool<R> rp;

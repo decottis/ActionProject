@@ -1,7 +1,11 @@
 package pool;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ */
 public abstract class Scheduler extends Action {
 
 	protected ArrayList<Action> actions;

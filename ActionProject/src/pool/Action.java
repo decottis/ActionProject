@@ -1,5 +1,9 @@
 package pool;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ */
 public abstract class Action {
 	/**
 	 * Number of steps for finish this action.

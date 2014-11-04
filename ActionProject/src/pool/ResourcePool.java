@@ -2,7 +2,12 @@ package pool;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ * @param <R>
+ */
 public abstract class ResourcePool<R extends Resource> {
 	protected ArrayList<R> available;
 	protected ArrayList<R> unavailable;

@@ -1,5 +1,9 @@
 package pool;
-
+/**
+ * It's a Scheduler who used a fair distribution of the action's progress
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ */
 public class SequentialScheduler extends Scheduler {
 
 	public SequentialScheduler() {

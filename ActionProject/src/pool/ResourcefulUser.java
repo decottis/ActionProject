@@ -1,5 +1,10 @@
 package pool;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ * @param <R>
+ */
 public class ResourcefulUser<R extends Resource> {
 	protected R resource;
 

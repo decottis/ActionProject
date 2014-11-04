@@ -1,5 +1,9 @@
 package pool;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ */
 public class Swimmer extends SequentialScheduler {
 	protected String name;
 	protected BasketPool bp;

@@ -1,5 +1,10 @@
 package pool;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ * @param <R>
+ */
 public class FreeResourceAction<R extends Resource> extends Action {
 	protected ResourcePool<R> rp;
 	protected ResourcefulUser<R> ru;

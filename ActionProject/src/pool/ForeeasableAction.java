@@ -1,5 +1,9 @@
 package pool;
-
+/**
+ * 
+ * @author Escobedo Geoffrey && Wadin Jonathan
+ *
+ */
 public class ForeeasableAction extends Action {
 
 	protected String nameAction;
