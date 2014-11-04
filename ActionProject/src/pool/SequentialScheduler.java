@@ -2,6 +2,9 @@ package pool;
 
 public class SequentialScheduler extends Scheduler {
 
+	public SequentialScheduler() {
+		super();
+	}
 	public void doStep() throws ActionFinishedException {
 		if (this.state == State.FINISHED) {
 			throw new ActionFinishedException();

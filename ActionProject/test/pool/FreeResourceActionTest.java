@@ -4,41 +4,41 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class FreeResourceActionTest extends ActionTest {
-	protected ResourcePool<Basket> basketPool;
-	protected ResourcefulUser<Basket> user;
+	protected ResourcePool<Cubicle> cubiclePool;
+	protected ResourcefulUser<Cubicle> user;
 	protected Action freeResource;
-	protected Basket basket;
+	protected Cubicle cubicle;
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void freeResourcesFromAnotherPoolTest() {
-		basketPool = new BasketPool(4);
-		basket = new Basket();
-		user = new ResourcefulUser<Basket>();
+		cubiclePool = new CubiclePool(4);
+		cubicle = new Cubicle();
+		user = new ResourcefulUser<Cubicle>();
 		// put another resource in user
-		user.setResource(basket);
+		user.setResource(cubicle);
 		// try to free it.
-		freeResource = new FreeResourceAction<Basket>(user,basketPool);
+		freeResource = new FreeResourceAction<Cubicle>(user,cubiclePool);
 		freeResource.doStep();
 		// In logic throw IllegalArgumentException 
 		freeResource.doStep();
 	}
 	@Test
 	public void freeResourcesTest() {
-		basketPool = new BasketPool(1);
-		user = new ResourcefulUser<Basket>();
+		cubiclePool = new CubiclePool(1);
+		user = new ResourcefulUser<Cubicle>();
 		assertTrue(user.getResource() == null);
-		user.setResource(basketPool.provideResource());
-		freeResource = new FreeResourceAction<Basket>(user,basketPool);
+		user.setResource(cubiclePool.provideResource());
+		freeResource = new FreeResourceAction<Cubicle>(user,cubiclePool);
 		freeResource.doStep();
-		assertFalse(basketPool.available.isEmpty());
+		assertFalse(cubiclePool.available.isEmpty());
 		assertTrue(user.getResource() == null);
 	}
 	@Override
 	public Action createAction() {
-		basketPool = new BasketPool(10);
-		user = new ResourcefulUser<Basket>();
-		Action takeResource = new TakeResourceAction<Basket>(user,basketPool);
+		cubiclePool = new CubiclePool(10);
+		user = new ResourcefulUser<Cubicle>();
+		Action takeResource = new TakeResourceAction<Cubicle>(user,cubiclePool);
 		takeResource.doStep();
-		return new FreeResourceAction<Basket>(user,basketPool); 
+		return new FreeResourceAction<Cubicle>(user,cubiclePool); 
 	}
 }
