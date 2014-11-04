@@ -10,8 +10,9 @@ public class ActionFinishedException extends RuntimeException {
 	public ActionFinishedException() {
 		super("Action finished.");
 	}
+
 	public ActionFinishedException(String message) {
 		super(message);
 	}
-	
+
 }
