@@ -10,6 +10,9 @@ public class BasketPool extends ResourcePool<Basket> {
 		super(size);
 	}
 
+	/**
+	 * Create a new Basket resource
+	 */
 	@Override
 	public Basket createResource() {
 		return new Basket();

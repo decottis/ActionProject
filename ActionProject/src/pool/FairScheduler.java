@@ -14,16 +14,13 @@ public class FairScheduler extends Scheduler {
 
 	public void doStep() throws ActionFinishedException {
 		super.doStep();
-
 		Action tmp = getAfterActionNotFinished();
-
 		if (tmp != null) {
 			tmp.doStep();
 			this.state = State.INPROGRESS;
 		} else {
 			this.state = State.FINISHED;
 		}
-
 		if (this.allActionsAreFinished())
 			this.state = State.FINISHED;
 	}
@@ -31,7 +28,7 @@ public class FairScheduler extends Scheduler {
 	public Action getAfterActionNotFinished() {
 		if (this.index == this.actions.size())
 			this.index = 0;
-		/* On regarde après l'index */
+		/* We search after position of the last used action */
 		for (int i = this.index; i < this.actions.size(); i++) {
 			if (!this.actions.get(i).isFinished()) {
 				this.index = i + 1;

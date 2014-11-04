@@ -10,6 +10,9 @@ public class CubiclePool extends ResourcePool<Cubicle> {
 		super(size);
 	}
 
+	/**
+	 * Create a new Cubicle resource
+	 */
 	@Override
 	public Cubicle createResource() {
 		return new Cubicle();
