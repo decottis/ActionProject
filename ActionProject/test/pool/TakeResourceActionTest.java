@@ -1,5 +1,5 @@
 package pool;
-
+/* Test class */
 import static org.junit.Assert.*;
 
 import java.util.NoSuchElementException;
