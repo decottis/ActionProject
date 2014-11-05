@@ -12,6 +12,9 @@ public class FairScheduler extends Scheduler {
 		this.index = 0;
 	}
 
+	/**
+	 * Method who does the action : execute action with a fair distribution of the action's progress
+	 */
 	public void doStep() throws ActionFinishedException {
 		super.doStep();
 		Action tmp = getAfterActionNotFinished();
@@ -25,6 +28,10 @@ public class FairScheduler extends Scheduler {
 			this.state = State.FINISHED;
 	}
 
+	/**
+	 * Method used in doStep function of FairScheduler class who return the first action not finished of his action list next the last action executed
+	 * @return
+	 */
 	public Action getAfterActionNotFinished() {
 		if (this.index == this.actions.size())
 			this.index = 0;
@@ -35,10 +42,7 @@ public class FairScheduler extends Scheduler {
 				return this.actions.get(i);
 			}
 		}
-		/*
-		 * Si l'on a pas retourné une action, on regarde avant l'index en
-		 * partant du début de la liste d'actions
-		 */
+		/*If the search doesn't succeed, we look before the index begin at the list action start*/
 		for (int i = 0; i < this.index; i++) {
 			if (!this.actions.get(i).isFinished()) {
 				this.index = i + 1;

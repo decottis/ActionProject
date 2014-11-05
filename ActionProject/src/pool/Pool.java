@@ -1,6 +1,6 @@
 package pool;
 /**
- * 
+ * Represents the Pool and is funtionning system
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */

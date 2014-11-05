@@ -40,7 +40,7 @@ public abstract class Action {
 	}
 
 	/**
-	 * 
+	 *  Return true if the action state value "finished"
 	 */
 	public boolean isFinished() {
 		return this.state == State.FINISHED;
