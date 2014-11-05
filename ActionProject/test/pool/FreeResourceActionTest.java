@@ -9,19 +9,6 @@ public class FreeResourceActionTest extends ActionTest {
 	protected Action freeResource;
 	protected Cubicle cubicle;
 	
-	@Test(expected=IllegalArgumentException.class)
-	public void freeResourcesFromAnotherPoolTest() {
-		cubiclePool = new CubiclePool(4);
-		cubicle = new Cubicle();
-		user = new ResourcefulUser<Cubicle>();
-		// put another resource in user
-		user.setResource(cubicle);
-		// try to free it.
-		freeResource = new FreeResourceAction<Cubicle>(user,cubiclePool);
-		freeResource.doStep();
-		// In logic throw IllegalArgumentException 
-		freeResource.doStep();
-	}
 	@Test
 	public void freeResourcesTest() {
 		cubiclePool = new CubiclePool(1);
