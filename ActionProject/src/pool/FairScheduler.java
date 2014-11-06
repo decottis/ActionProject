@@ -17,19 +17,18 @@ public class FairScheduler extends Scheduler {
 	 */
 	public void doStep() throws ActionFinishedException {
 		super.doStep();
-		Action tmp = getAfterActionNotFinished();
-		if (tmp != null) {
-			tmp.doStep();
-			this.state = State.INPROGRESS;
+		
+		getAfterActionNotFinished().doStep();
+		
+		if (allActionsAreFinished()){
+			this.state = State.FINISHED;
 		} else {
-			this.state = State.FINISHED;
+			this.state = State.INPROGRESS;
 		}
-		if (this.allActionsAreFinished())
-			this.state = State.FINISHED;
 	}
 
 	/**
-	 * Method used in doStep function of FairScheduler class who return the first action not finished of his action list next the last action executed
+	 * Method used in doStep function of FairScheduler class who returns the first action not finished of his action list next the last action executed
 	 * @return
 	 */
 	public Action getAfterActionNotFinished() {

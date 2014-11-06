@@ -7,7 +7,7 @@ package pool;
 public class CubiclePool extends ResourcePool<Cubicle> {
 
 	public CubiclePool(int size) {
-		super(size);
+		super("CubiclePool",size);
 	}
 
 	/**

@@ -9,13 +9,16 @@ import java.util.NoSuchElementException;
  * @param <R>
  */
 public abstract class ResourcePool<R extends Resource> {
+
+	protected String description;
 	protected ArrayList<R> available;
 	protected ArrayList<R> unavailable;
 
-	public ResourcePool(int size) {
+	public ResourcePool(String description, int size) {
+		this.description = description;
 		this.available = new ArrayList<R>(size);
 		for (int i = 0; i < size; i++) {
-			this.available.add(this.createResource());
+			this.available.add(createResource());
 		}
 		this.unavailable = new ArrayList<R>(size);
 	}
@@ -54,6 +57,13 @@ public abstract class ResourcePool<R extends Resource> {
 			throw new IllegalArgumentException();
 		}
 
+	}
+	
+	/**
+	 * Return the Resource Pool description
+	 */
+	public String getDescription(){
+		return this.description;
 	}
 
 }

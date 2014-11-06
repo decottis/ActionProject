@@ -7,7 +7,7 @@ package pool;
 public class Cubicle implements Resource {
 
 	/**
-	 * Returns the Cubicle description
+	 * Return the Cubicle description
 	 */
 	@Override
 	public String getDescription() {

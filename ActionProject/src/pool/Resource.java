@@ -8,7 +8,7 @@ package pool;
 public interface Resource {
 	
 	/**
-	 * Return the Resource Description
+	 * Return the Resource description
 	 * @return
 	 */
 	public String getDescription();

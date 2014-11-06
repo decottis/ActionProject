@@ -23,13 +23,7 @@ public class TakeResourceAction<R extends Resource> extends Action {
 	 */
 	public void doStep() throws NoSuchElementException, ActionFinishedException {
 		super.doStep();
-		String display = "\tTrying to take ressource from pool " /*
-																 * +
-																 * ru.getResource
-																 * (
-																 * ).getDescription
-																 * ()
-																 */+ "... ";
+		String display = "\tTrying to take ressource from pool ... ";
 		try {
 			this.ru.setResource(this.rp.provideResource());
 

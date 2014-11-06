@@ -7,7 +7,7 @@ package pool;
 public class BasketPool extends ResourcePool<Basket> {
 
 	public BasketPool(int size) {
-		super(size);
+		super("BasketPool",size);
 	}
 
 	/**

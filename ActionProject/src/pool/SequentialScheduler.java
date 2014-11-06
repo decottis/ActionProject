@@ -16,9 +16,9 @@ public class SequentialScheduler extends Scheduler {
 		if (this.state == State.FINISHED) {
 			throw new ActionFinishedException();
 		}
-		this.getFirstActionNotFinished().doStep();
+		getFirstActionNotFinished().doStep();
 		this.stepCounter++;
-		if (this.allActionsAreFinished()) {
+		if (allActionsAreFinished()) {
 			this.state = State.FINISHED;
 		} else {
 			this.state = State.INPROGRESS;
@@ -26,7 +26,7 @@ public class SequentialScheduler extends Scheduler {
 	}
 
 	/**
-	 * Method used in doStep function of SequentialScheduler class who return the first action not finished of his action list
+	 * Method used in doStep function of SequentialScheduler class who returns the first action not finished of his action list
 	 * @return
 	 */
 	public Action getFirstActionNotFinished() {

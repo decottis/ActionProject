@@ -7,7 +7,7 @@ package pool;
 public class Basket implements Resource {
 
 	/**
-	 * Function who returns Basket description
+	 * Return Basket description
 	 */
 	@Override
 	public String getDescription() {
