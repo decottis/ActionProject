@@ -4,23 +4,23 @@ import java.util.NoSuchElementException;
 
 import org.junit.Test;
 
-public abstract class ResourcePoolTest {
+public abstract class ResourcePoolTest<R extends Resource> {
 
-	ResourcePool<Resource> pool;
-	public abstract ResourcePool<?> createResourcePool();
+	ResourcePool<R> pool;
+	public abstract ResourcePool<R> createResourcePool();
+	public abstract R createResource();
 	
-	@SuppressWarnings("unchecked")
 	@Test(expected=NoSuchElementException.class)
 	public void provideResourceInEmptyPoolTest() {
-		pool = ((ResourcePool<Resource>) createResourcePool());
+		pool = createResourcePool();
 		// In logic throw NoSuchElementException 
 		pool.provideResource();
 	}
-	@SuppressWarnings("unchecked")
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void freeResourceNotInPool() {
-		pool = (ResourcePool<Resource>) createResourcePool();
+		pool = createResourcePool();
 		// In logic throw IllegalArgumentException 
-		pool.freeResource(new Basket());
+		pool.freeResource(createResource());
 	}
 }
