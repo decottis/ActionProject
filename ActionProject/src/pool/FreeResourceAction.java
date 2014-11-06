@@ -1,6 +1,6 @@
 package pool;
 /**
- * 
+ * Represents the action to return a resource from ResourcefulUser to a ResourcePool
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  * @param <R>
@@ -8,13 +8,15 @@ package pool;
 public class FreeResourceAction<R extends Resource> extends Action {
 	protected ResourcePool<R> rp;
 	protected ResourcefulUser<R> ru;
-
 	public FreeResourceAction(ResourcefulUser<R> ru, ResourcePool<R> rp) {
 		this.rp = rp;
 		this.ru = ru;
 		this.state = State.READY;
 	}
 
+	/**
+	 * Method who does the action : return a resource from ResourcefulUser to a ResourcePool
+	 */
 	public void doStep() throws IllegalArgumentException,
 			ActionFinishedException {
 		super.doStep();

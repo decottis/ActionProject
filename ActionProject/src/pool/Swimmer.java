@@ -1,6 +1,6 @@
 package pool;
 /**
- * 
+ * Represents a swimmer in a Pool (action set)
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */
@@ -29,6 +29,9 @@ public class Swimmer extends SequentialScheduler {
 		this.initActions();
 	}
 
+	/**
+	 * Method who initialize swimmer action set
+	 */
 	private void initActions() {
 		this.addAction(new TakeResourceAction<Basket>(this.basket, this.bp));
 		this.addAction(new TakeResourceAction<Cubicle>(this.cubicle, this.cp));
@@ -40,7 +43,9 @@ public class Swimmer extends SequentialScheduler {
 		this.addAction(new FreeResourceAction<Cubicle>(this.cubicle, this.cp));
 		this.addAction(new FreeResourceAction<Basket>(this.basket, this.bp));
 	}
-
+	/**
+	 * Method who does the action : print turn of the swimmer and execute an action 
+	 */
 	public void doStep() {
 		System.out.println(this.name + " play turn : ");
 		super.doStep();

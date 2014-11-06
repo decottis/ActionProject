@@ -3,7 +3,7 @@ package pool;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 /**
- * 
+ * Represents a Resource set
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  * @param <R>
@@ -19,9 +19,17 @@ public abstract class ResourcePool<R extends Resource> {
 		}
 		this.unavailable = new ArrayList<R>(size);
 	}
-
+	/**
+	 * Function implements in children classes of ResourcePool who returns a specific Resource
+	 * @return
+	 */
 	public abstract R createResource();
 
+	/**
+	 * Function who return a Resource if that one is available
+	 * @return
+	 * @throws NoSuchElementException
+	 */
 	public R provideResource() throws NoSuchElementException {
 		if (this.available.isEmpty())
 			throw new NoSuchElementException();
@@ -33,6 +41,11 @@ public abstract class ResourcePool<R extends Resource> {
 		}
 	}
 
+	/**
+	 * Method who free a Resource if that one is available
+	 * @param r
+	 * @throws IllegalArgumentException
+	 */
 	public void freeResource(R r) throws IllegalArgumentException {
 		if (this.unavailable.contains(r)) {
 			this.unavailable.remove(r);
