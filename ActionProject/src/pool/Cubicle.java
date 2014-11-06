@@ -1,6 +1,8 @@
 package pool;
+
 /**
  * Represents an individual changing room
+ * 
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */

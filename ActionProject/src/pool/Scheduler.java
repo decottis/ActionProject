@@ -1,8 +1,10 @@
 package pool;
 
 import java.util.ArrayList;
+
 /**
  * Represents an action built of an action set
+ * 
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */
@@ -16,6 +18,7 @@ public abstract class Scheduler extends Action {
 
 	/**
 	 * Function who return true if all actions are finished
+	 * 
 	 * @return
 	 */
 	public boolean allActionsAreFinished() {
@@ -28,6 +31,7 @@ public abstract class Scheduler extends Action {
 
 	/**
 	 * Method who add an action in the action set
+	 * 
 	 * @param action
 	 */
 	public void addAction(Action action) {

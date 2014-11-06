@@ -1,6 +1,8 @@
 package pool;
+
 /**
  * Represents an action who can be execute until number max of steps
+ * 
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */
@@ -14,7 +16,8 @@ public class ForeeasableAction extends Action {
 	}
 
 	/**
-	 * Method who does an action and increment a counter until reachs numberOfStepsMax
+	 * Method who does an action and increment a counter until reachs
+	 * numberOfStepsMax
 	 */
 	public void doStep() throws ActionFinishedException {
 		super.doStep();

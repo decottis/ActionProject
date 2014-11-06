@@ -1,7 +1,9 @@
 package pool;
 
 /**
- * Represents an exception who can be throw if we execute an action doStep already finished
+ * Represents an exception who can be throw if we execute an action doStep
+ * already finished
+ * 
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */

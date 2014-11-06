@@ -1,6 +1,8 @@
 package pool;
+
 /**
  * Represents a container for clothes
+ * 
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  */

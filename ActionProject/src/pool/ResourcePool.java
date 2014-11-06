@@ -2,15 +2,17 @@ package pool;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+
 /**
  * Represents a Resource set
+ * 
  * @author Escobedo Geoffrey && Wadin Jonathan
  *
  * @param <R>
  */
 public abstract class ResourcePool<R extends Resource> {
 
-	protected String description;
+	private String description;
 	protected ArrayList<R> available;
 	protected ArrayList<R> unavailable;
 
@@ -22,14 +24,18 @@ public abstract class ResourcePool<R extends Resource> {
 		}
 		this.unavailable = new ArrayList<R>(size);
 	}
+
 	/**
-	 * Function implements in children classes of ResourcePool who returns a specific Resource
+	 * Function implements in children classes of ResourcePool who returns a
+	 * specific Resource
+	 * 
 	 * @return
 	 */
 	public abstract R createResource();
 
 	/**
 	 * Function who return a Resource if that one is available
+	 * 
 	 * @return
 	 * @throws NoSuchElementException
 	 */
@@ -46,6 +52,7 @@ public abstract class ResourcePool<R extends Resource> {
 
 	/**
 	 * Method who free a Resource if that one is available
+	 * 
 	 * @param r
 	 * @throws IllegalArgumentException
 	 */
@@ -58,11 +65,11 @@ public abstract class ResourcePool<R extends Resource> {
 		}
 
 	}
-	
+
 	/**
 	 * Return the Resource Pool description
 	 */
-	public String getDescription(){
+	public String getDescription() {
 		return this.description;
 	}
 

@@ -1,4 +1,5 @@
 package pool;
+
 /**
  * 
  * @author Escobedo Geoffrey && Wadin Jonathan
@@ -40,7 +41,7 @@ public abstract class Action {
 	}
 
 	/**
-	 *  Return true if the action state value "finished"
+	 * Return true if the action state value "finished"
 	 */
 	public boolean isFinished() {
 		return this.state == State.FINISHED;
