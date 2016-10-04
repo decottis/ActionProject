@@ -8,6 +8,7 @@ package pool;
  */
 public class Basket implements Resource {
 
+	// Description pas très explicite. A refaire ASAP
 	/**
 	 * Return Basket description
 	 */
