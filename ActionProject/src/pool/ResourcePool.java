@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 /**
  * Represents a Resource set
  * 
- * @author Escobedo Geoffrey && Wadin Jonathan
+ * @author Escobedo Geoffrey && Wadin Jonathan && Simon Decottignies
  *
  * @param <R>
  */
